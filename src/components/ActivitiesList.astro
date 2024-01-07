@@ -1,0 +1,23 @@
+---
+const {athleteActivities} = Astro.props;
+---
+<div class="overflow-x-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Atlet</th>
+        <th>Antall aktiviteta</th>
+        <th>Distanse dekka (km)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {athleteActivities.map((summary) => (
+        <tr>
+          <td>{summary.athleteName}</td>
+          <td>{summary.count}</td>
+          <td>{summary.totalDistance ? summary.totalDistance.toFixed(2) : '0.00'}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

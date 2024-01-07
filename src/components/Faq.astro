@@ -1,0 +1,73 @@
+
+
+<div class="faq">
+    <div class="faq-item">
+      <button class="faq-question">Hva kvalifiserer som en treningsøkt?    </button>
+      <div class="faq-answer">Du må trene i minimum 30 min sammenhengende. Følgende treningstyper er godkjent som treningsøkt: Løping, Styrke, Ski, Randonee, Fjelltur, Svømming, Klatring, Sykling. Aktivitetstyper ut over dette godkjennes såfremt ikke andre utøvere legger inn klage grunnet ugyldig aktivitetstype. Hvis klage fremlegges vil det bli avgjort gjennom avstemning i "rådet".</div>
+    </div>
+    <!-- Repeat for other FAQs -->
+    <div class="faq-item">
+        <button class="faq-question">Kan jeg trene flere ganger på en dag?</button>
+        <div class="faq-answer"> Målet er å bli aktiv, så det er lov å trene så mye du bare vil! Det er imidlertid ikke lov å splitte opp lange økter for å få registrert flere antall økter. Ved mistanke om forsøk på juks på denne måten kan det løftes til "rådet" som stemmer om det er en straffbar forseelse. Straff vil utmåles både i poengtrekk og fysisk avstraffning.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Jeg passerer 20 000 skritt ila en dag. Kan jeg starte en treningsøkt på starten av arbeidsdagen og logge det som en treningsøkt?</button>
+        <div class="faq-answer">Idiotass.</div>
+      </div>
+  </div>
+  <script>
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    const answer = question.nextElementSibling;
+    if (answer instanceof HTMLElement) {
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    }
+  });
+
+});
+  </script> 
+  <style>/* Style for the entire FAQ container */
+/* Style for the entire FAQ container */
+.faq {
+  background-color: #e4d8b4; /* Card background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+  border-radius: 8px; /* Rounded corners for the card */
+  padding: 1px; /* Small padding around the entire FAQ to allow border rounding */
+  max-width: 600px; /* Maximum width of the FAQ card */
+  margin: auto; /* Centering the card */
+  width: 100%; /* Ensure the FAQ takes full width */
+}
+
+/* Style for each FAQ item */
+.faq-item {
+  display: flex; /* Using Flexbox */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.faq-item:not(:last-child) {
+  border-bottom: 1px solid #eaeaea; /* Line separating each item */
+}
+
+/* Style for the question part */
+.faq-question {
+  cursor: pointer; /* Change cursor to indicate it's clickable */
+  background-color: #e4d8b4; /* Light background for the question row */
+  padding: 10px; /* Padding inside the question row */
+  margin: 0; /* Remove default margins */
+  font-weight: bold; /* Optional: Make the question text bold */
+  border: none; /* Remove border */
+  width: 100%; /* Fixed width */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Style for the answer part */
+.faq-answer {
+  display: none; /* Hide the answer by default */
+  padding: 10px; /* Padding inside the answer row */
+  background-color: #e4d8b4; /* Background for the answer */
+  width: 100%; /* Fixed width */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+    </style>
+
+  
