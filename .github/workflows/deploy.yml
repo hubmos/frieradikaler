@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   build:
+    environment: github-pages
     env: 
       SECRET_CLIENT_SECRET: ${{ secrets.SECRET_CLIENT_SECRET }}
       SECRET_REFRESH_TOKEN: ${{ secrets.SECRET_REFRESH_TOKEN }}
