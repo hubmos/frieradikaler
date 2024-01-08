@@ -116,7 +116,9 @@ if (bottomAthletesNames.length > 1) {
 			<div class="divider mx-20"></div> 
 			<div class=" h-20"></div>
 		  </div>
-        <section id="month" class="font-bold text-center"><h1 class="text-5xl font-bold text-center object-center justify-center">Denna måneden</h1></section>
+        <section id="month" class="font-bold text-center"></section>
+		<div class="h-20"></div> 
+		<h1 class="text-5xl font-bold text-center object-center justify-center">Denna måneden</h1>
 		<div class="h-20"></div> 
 		<div class="text-3xl font-bold  text-center">Antall aktiviteta per pers</div>
 		<div class="mx-4 object-center justify-center"><Line activities={lineDatas} client:only/></div>
@@ -138,7 +140,9 @@ if (bottomAthletesNames.length > 1) {
 		<div class="h-20"></div> 
 		<div class="divider mx-20"></div> 
 		<div class=" h-20"></div>
-        <section id="year" class="mx-4text-4xl font-bold text-center"><h1 class="text-5xl font-bold text-center object-center justify-center">Året</h1></section>
+        <section id="year" class="mx-4text-4xl font-bold text-center"></section>
+		<div class=" h-20"></div>
+		<h1 class="text-5xl font-bold text-center object-center justify-center">Året</h1>
 		<div class=" h-20"></div>
 		<div class="mx-4 text-3xl font-bold text-center object-center justify-center ">Fremgangen</div>
         <Chart activities={totalActivities} client:only/>
