@@ -1,11 +1,11 @@
 import admin from 'firebase-admin';
+import creds from '../../google-services.json'
 
 if (!admin.apps.length) {
 // Initialize Firebase Admin SDK
-const jsonk= await import.meta.env.SECRET_ACCOUNT;
 //const keys = JSON.parse(jsonk);
 admin.initializeApp({
- credential: admin.credential.cert(jsonk)});
+ credential: admin.credential.cert(creds)});
 };
 // Initialize Firestore Database
 const db = admin.firestore();
