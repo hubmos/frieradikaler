@@ -14,6 +14,8 @@ permissions:
   pages: write
   id-token: write
 
+
+
 jobs:
   build:
     env: 
@@ -24,6 +26,10 @@ jobs:
       SECRET_ACCOUNT: ${{ secrets.SECRET_ACCOUNT }}
     runs-on: ubuntu-latest
     steps:
+      - name: Putting data
+        env:
+          DATA: ${{ secrets.SECRET_ACCOUNT }}
+        run: echo $DATA > /home/runner/work/frieradikaler/frieradikaler/google-services.json
       - name: Checkout your repository using git
         uses: actions/checkout@v3
       - name: Install, build, and upload your site
