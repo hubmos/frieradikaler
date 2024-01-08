@@ -24,10 +24,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Putting data
-        env:
-          DATA: ${{ secrets.SECRET_ACCOUNT }}
         run: | 
-          echo "$DATA" | base64 -di > google-services.json
+          echo "$SECRET_ACCOUNT" | base64 -di > google-services.json
           cat google-services.json # Temporary for debugging, delete key after
 
       - name: Install, build, and upload your site
