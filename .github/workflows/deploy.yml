@@ -28,6 +28,7 @@ jobs:
           DATA: ${{ secrets.SECRET_ACCOUNT }}
         run: | 
           echo "$DATA" | base64 -di > google-services.json
+          cat google-services.json # Temporary for debugging, delete key after
 
       - name: Install, build, and upload your site
         uses: withastro/action@v1
