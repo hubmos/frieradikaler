@@ -1,54 +1,95 @@
-# Astro Starter Kit: Basics
+# frieradikaler
 
-```sh
-npm create astro@latest -- --template basics
+frieradikaler is a single-page web application that showcases the latest running activities from a Strava Club. It automates the retrieval of data from Strava API v3 and displays the activities along with the distance covered. The application ensures that the activity data is always up to date with nightly updates and leverages an SQLite databases for data persistence.
+
+## Technologies Used
+
+- Astro Framework for building the website
+- Strava API v3 for fetching activity data
+- SQLite for database management
+- absurd-sql for ensuring persistence on the web
+- Node.js as the runtime environment
+- cron for scheduling nightly updates
+- HTML and CSS3 for the presentation layer
+
+## Project Files and Directories
+
+This section provides a brief description of the project's file structure:
+
+- `.gitignore` - Contains a list of files and directories ignored by git
+- `astro.config.mjs` - Astro configuration module
+- `package.json` - Lists the project dependencies and metadata
+- `README.md` - The readme file you are currently reading
+- `tsconfig.json` - Configuration file for TypeScript
+- `public/favicon.svg` - The site favicon
+- `src/env.d.ts` - TypeScript definitions for Astro client
+- `src/components/` - Astro components used in the application
+- `src/layouts/` - Layout components for the app structure
+- `src/pages/` - Pages within the Astro application
+- `.env.local` and `.env` - Environment configuration files (should contain sensitive data)
+- `db/config.js` - Configuration for the SQLite database
+- `src/components/ActivitiesList.astro` - Component listing the fetched activities
+- `src/components/Activity.astro` - Represents a single activity
+- `src/utils/strava.js` - Utility functions to interact with the Strava API
+- `src/server/cronScheduledTasks.js` - Cron tasks for updating the database periodically
+- `src/test/fetchStravaActivities.js` - Test script for the Strava API functionality
+- `db/schema.sql` - SQL schema for the project's database
+- `db/utils.js` - Utility functions for database interactions
+- `db/database.js` - Initialization of the absurd-sql database
+- `frieradikaler_key.json` - Firebase service account key
+- `src/server/firebase.js` - Firebase admin initialization
+- `src/utils/firestore.js` - Functions to interact with Firebase Firestore
+
+## Setup and Configuration
+
+Before running the application, please ensure that you have created the `.env.local` with the appropriate Strava API credentials and the database path. The `.env` file format should look like this:
+
+```
+# SQLite configuration
+DATABASE_URL=file:./data/frieradikaler.db
+
+# Strava API credentials
+SECRET_CLIENT_ID=<your_client_id>
+SECRET_CLIENT_SECRET=<your_client_secret>
+SECRET_REFRESH_TOKEN=<your_refresh_token>
+SECRET_CLUB_ID=<your_club_id>
+SECRET_ACCESS_TOKEN=<your_access_token>
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Replace `<your_client_id>`, `<your_client_secret>`, `<your_refresh_token>`, `<your_club_id>`, and `<your_access_token>` with your Strava API credentials.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Installation
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+To install the dependencies for frieradikaler, run the following command:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Running the application
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+To start the development server, execute:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+npm run dev
+```
 
-## 🧞 Commands
+To build the application for production:
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm run build
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+To preview the build locally before deployment:
 
-## 👀 Want to learn more?
+```bash
+npm run preview
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Automated Updates
+
+The `src/server/cronScheduledTasks.js` file contains a Node.js `cron` job that will update the activities from Strava API v3 nightly. The default timezone set for the update is UTC.
+
+## Acknowledgements
+
+This application was built using the open-source tools and libraries listed above. Additionally, Strava API's availability is crucial for the app's operation. A special thanks to the maintainers and contributors of these projects.
