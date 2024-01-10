@@ -1,5 +1,6 @@
 ---
 import ActivitiesList from '../components/ActivitiesList.astro';
+import { useState, useEffect } from 'react';
 import Chart from '../components/Donut.jsx';
 import Line from '../components/Line.jsx';
 import image from '../images/img.png'
@@ -72,6 +73,23 @@ if (bottomAthletesNames.length > 1) {
     <meta name="generator" content="{Astro.generator}" />
     <title>{title}</title>
 </head>
+// Inside your Astro component
+<script>
+  const [activities, setActivities] = useState([]);
+
+  useEffect(() => {
+    // Function to fetch activities
+    const fetchActivities = async () => {
+      // Fetch data from Firestore
+      const newActivities = await getAllActivities();
+      setActivities(newActivities);
+    };
+
+    fetchActivities();
+  }, []);
+
+  // Use 'activities' state in your component to display data
+</script>
 <body data-theme="retro">
 	<div class="navbar fixed bg-opacity-50 bg-lett">
 		<div class="flex-1">

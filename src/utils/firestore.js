@@ -1,37 +1,14 @@
 import db from '../server/firebase.js';
 
-async function insertActivity({ id, name, athleteName, distance, date, moving_time, total_elevation_gain, elapsed_time, type, sport_type, workout_type }) {
-  const activityRef = db.collection('activities');
-  const activityQuery = activityRef.where('id', '==', id).limit(1);
-  
-  const querySnapshot = await activityQuery.get();
 
-  // Check if activity already exists
-  if (querySnapshot.empty) {
-    // Activity does not exist, add new activity
-    await activityRef.add({
-      id,
-      name,
-      athleteName,
-      distance,
-      date: date,
-      moving_time,
-      total_elevation_gain,
-      elapsed_time,
-      type,
-      sport_type,
-      workout_type: workout_type
-    });
-    console.log(`Activity with ID ${id} added.`);
-  } else {
-    console.log(`Activity with ID ${id} already exists.`);
-  }
-}
 
 async function getAllActivities() {
   const activities = [];
   const snapshot = await db.collection('activities').get();
   snapshot.forEach(doc => {
+    if (activity.date=== "2023") {
+          
+    } else
     activities.push({ id: doc.id, ...doc.data() });
   });
   return activities;
