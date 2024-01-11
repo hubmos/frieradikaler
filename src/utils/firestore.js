@@ -58,11 +58,6 @@ async function getSumActivities(activities) {
     athleteActivities[athleteName].totalDistance += activity.distance / 1000;
     athleteActivities[athleteName].count += 1;
   });
-  if (Object.keys(athleteActivities).length===3) {
-    athleteActivities['Krish'] = {
-    totalDistance: 0,
-    count: 0,
-    athleteName: 'Krish'}};
       return Object.values(athleteActivities);
 }
 
@@ -182,11 +177,7 @@ async function processAthleteData(activities) {
     athleteStats[athleteName].activitiesCount += 1;
     athleteStats[athleteName].totalDistance += distance; // Assuming distance is a number
     athleteStats[athleteName].totalDuration += elapsed_time; // Assuming duration is a number
-    if (Object.keys(athleteStats).length===3) {
-      athleteStats['Krish'] = {
-      totalDistance: 0,
-      activitiesCount: 0,
-      totalDuration: 0}};
+
         return Object.values(athleteStats);
   });
   console.log(athleteStats)
