@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken } from "firebase/messaging";
 
 
-const firebaseConfig = JSON.parse(import.meta.env.FIREBASE_CONFIG);
+const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
 
 
 
@@ -16,7 +16,7 @@ navigator.serviceWorker.register('/frieradikaler/firebase-messaging-sw.js')
   .then((registration) => {
     console.log('Service Worker registered with scope:', registration.scope);
     const messaging = getMessaging(app);
-    return getToken(messaging, { vapidKey: import.meta.env.VAPID_KEY, serviceWorkerRegistration: registration}, );
+    return getToken(messaging, { vapidKey: process.env.VAPID_KEY, serviceWorkerRegistration: registration}, );
   })
   .then((currentToken) => {
     if (currentToken) {

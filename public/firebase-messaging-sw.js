@@ -9,7 +9,7 @@
  // Initialize the Firebase app in the service worker by passing in
  // your app's Firebase config object.
  // https://firebase.google.com/docs/web/setup#config-object
- const firebaseConfig = JSON.parse(import.meta.env.FIREBASE_CONFIG);
+ const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
  firebase.initializeApp(firebaseConfig);
 
  // Retrieve an instance of Firebase Messaging so that it can handle background
