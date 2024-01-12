@@ -21,6 +21,8 @@ jobs:
       SECRET_CLUB_ID: ${{ secrets.SECRET_CLUB_ID }}
       SECRET_ACCESS_TOKEN: ${{ secrets.SECRET_ACCESS_TOKEN }}
       SECRET_ACCOUNT: ${{ secrets.SECRET_ACCOUNT }}
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      VAPID_KEY: ${{ secrets.VAPID_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
