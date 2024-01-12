@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.2.18",
     "apexcharts": "^3.45.1",
     "astro": "^4.1.1",
+    "firebase": "^10.7.1",
     "firebase-admin": "^12.0.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
