@@ -63,15 +63,15 @@ const ActivitiesChart = ({ activities }) => {
             fontWeight: 'bold',
         },}
       },
-      colors: ['#58508d', '#bc5090', '#ff6361', '#ffa600','#003f5c'],
+      colors: ['#58508d', '#bc5090', '#ff6361', '#003f5c', '#ffa600',],
       stroke: {
-        width: [3, 3, 3, 2],
-        curve: ['smooth','smooth','smooth','smooth'],
-        dashArray: [0, 0, 0, 5]      
+        width: [3, 3, 3, 3, 2],
+        curve: ['smooth','smooth','smooth','smooth','smooth'],
+        dashArray: [0, 0, 0, 0, 5]      
       },
       grid: {show: false},
       fill: {
-        type: ['solid', 'solid', 'solid', 'gradient']
+        type: ['solid', 'solid', 'solid', 'solid', 'gradient']
       },
       tooltip: {
         x: {
