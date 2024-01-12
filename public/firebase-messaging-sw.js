@@ -9,7 +9,15 @@
  // Initialize the Firebase app in the service worker by passing in
  // your app's Firebase config object.
  // https://firebase.google.com/docs/web/setup#config-object
- const firebaseConfig = JSON.parse(import.meta.env.FIREBASE_CONFIG);
+ const firebaseConfig = {
+  apiKey: "AIzaSyD_D_vnwfmdGd370TkaHWxNsZQkMhyRo6E",
+  authDomain: "frieradikaler-89f98.firebaseapp.com",
+  projectId: "frieradikaler-89f98",
+  storageBucket: "frieradikaler-89f98.appspot.com",
+  messagingSenderId: "293984564324",
+  appId: "1:293984564324:web:52b5dc32abd2205bd4db71",
+  measurementId: "G-DS1MY9RRY8"
+};
  firebase.initializeApp(firebaseConfig);
 
  // Retrieve an instance of Firebase Messaging so that it can handle background
