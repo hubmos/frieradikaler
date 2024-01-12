@@ -31,7 +31,6 @@ jobs:
       - name: Putting data
         run: | 
           echo "$SECRET_ACCOUNT" | base64 -di > google-services.json
-          cat google-services.json # Temporary for debugging, delete key after
 
       - name: Install, build, and upload your site
         uses: withastro/action@v1
