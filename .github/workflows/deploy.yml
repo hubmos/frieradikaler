@@ -50,6 +50,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    env: 
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      VAPID_KEY: ${{ secrets.VAPID_KEY }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
