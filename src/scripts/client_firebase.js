@@ -18,7 +18,8 @@ const firebaseConfig = {
 const app=initializeApp(firebaseConfig);
 
 
-
+let permission = await Notification.requestPermission();
+if (permission === "granted") {
 // Register Service Worker
 navigator.serviceWorker.register('/frieradikaler/firebase-messaging-sw.js')
   .then((registration) => {
@@ -36,4 +37,6 @@ navigator.serviceWorker.register('/frieradikaler/firebase-messaging-sw.js')
   })
   .catch((err) => {
     console.log('An error occurred while retrieving token. ', err);
-  });
+  });} else {
+    // Handle denied permission
+  }
