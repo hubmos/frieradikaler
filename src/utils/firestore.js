@@ -6,7 +6,7 @@ async function getAllActivities() {
   const activities = [];
   const snapshot = await db.collection('activities').get();
   snapshot.forEach(doc => {
-    if (activity.date=== "2023") {
+    if (doc.date=== "2023") {
           
     } else
     activities.push({ id: doc.id, ...doc.data() });
@@ -188,4 +188,4 @@ async function prepareBarChartData(activities) {
 }
 
 
-export { insertActivity, getAllActivities, getSumActivities, createChartDataset, prepareBarChartData };
+export { getAllActivities, getSumActivities, createChartDataset, prepareBarChartData };

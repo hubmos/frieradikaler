@@ -17,13 +17,9 @@ allActivities.forEach(activity => {
         } else
 		{totalActivities+=1;}
       });
-type AthleteActivity = {
-  totalDistance: number;
-  count: number;
-  athleteName: string;
-}; 
+
 const lineDatas=await createChartDataset(allActivities);
-const athleteActivitiesArray: AthleteActivity[] = Object.values(athleteActivities);
+const athleteActivitiesArray = Object.values(athleteActivities);
 
 // Find the highest count of activities
 const highestCount = Math.max(...athleteActivitiesArray.map(athlete => athlete.count));
