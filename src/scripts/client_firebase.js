@@ -1,7 +1,7 @@
 // Firebase Client-Side Initialization
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken } from "firebase/messaging";
-
+import { getFirestore, addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD_D_vnwfmdGd370TkaHWxNsZQkMhyRo6E",
@@ -14,9 +14,21 @@ const firebaseConfig = {
 };
 
 
-
 const app=initializeApp(firebaseConfig);
 
+const db=getFirestore(app);
+
+async function saveTokenToFirestore(token) {
+    try {
+      const docRef = await addDoc(collection(db, 'fcmTokens'), {
+        token: token,
+        createdAt: serverTimestamp()
+      });
+      console.log('Token stored with ID:', docRef.id);
+    } catch (error) {
+      console.error('Error storing token:', error);
+    }
+  }
   document.addEventListener('click', function handleNotificationRequest() {
     Notification.requestPermission().then(function (permission) {
         if (permission === "granted") {
@@ -31,8 +43,15 @@ const app=initializeApp(firebaseConfig);
                 })
                 .then((currentToken) => {
                     if (currentToken) {
-                        console.log('success', currentToken);
-                        // Additional logic here
+                        if (currentToken) {
+                            const storedToken = localStorage.getItem('fcmToken');
+                            if (currentToken !== storedToken) {
+                                console.log('New token found, storing in Firestore.');
+                                saveTokenToFirestore(currentToken);
+                                localStorage.setItem('fcmToken', currentToken);
+                            } else {
+                                console.log('Existing token found, no need to store in Firestore.');
+                            }}
                     } else {
                         console.log('No registration token available. Request permission to generate one.');
                     }
