@@ -1,24 +1,6 @@
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 
-const getCurrentMonthDates = () => {
-  const now = new Date();
-  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-  
-  return {
-    name: 'Veien te 600',
-    data: [
-      { x: startOfMonth.toISOString().split('T')[0], y: 0 }, // Start of month
-      { x: endOfMonth.toISOString().split('T')[0], y: 12.5 } // End of month
-    ],
-    stroke: {
-      color: '#808080', // Gray color
-      dashArray: 5     // Dotted line (5 = dot pattern)
-    }
-  };
-};
-
 const ActivitiesCharts = ({ acts }) => {
   const [chartData, setChartData] = useState({
     series: [], // This will hold the data for each athlete
@@ -80,7 +62,6 @@ const ActivitiesCharts = ({ acts }) => {
 
   useEffect(() => {
     if (acts && acts.length > 0) {
-      console.log(acts[0])
       setChartData(chartData => ({
         ...chartData,
         series: acts.slice(1),

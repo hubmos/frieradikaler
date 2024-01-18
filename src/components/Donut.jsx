@@ -7,8 +7,9 @@ const ActivitiesChart = ({ activities }) => {
     options: {
       chart: {
         type: 'donut',
-        width: '10%',
+        width: '100%',
       },
+      
       yaxis: {labels: {show: false}},
       fill: {
         colors: ['#58508d', '#b6b1a5']
@@ -18,10 +19,12 @@ const ActivitiesChart = ({ activities }) => {
       legend: {
         show: false,},
       responsive: [{
-        options: {
-          chart: {
-            width: '10%',
-          },
+          breakpoint: 480,
+          options: {
+            chart: {
+              height: 300
+            },
+
           legend: {
             show: false,
             position: 'bottom'
@@ -36,11 +39,14 @@ const ActivitiesChart = ({ activities }) => {
     const goal = 600;
     const remaining = goal - totalActivities;
 
-    setChartData({ ...chartData, series: [totalActivities, remaining] });
+    setChartData({ ...chartData, series: [totalActivities, remaining],chart: {
+      type: 'line',
+      width: '100%'
+    } });
   }, [activities]);
 
   return (
-    <div style={{ width: "100%" }} className="w-full"><Chart  options={chartData.options} series={chartData.series} type="donut" /></div>
+    <div style={{ width: "100%" }} className="w-full"><Chart class="md:h-full" options={chartData.options} series={chartData.series} type="donut" /></div>
   );
 };
 

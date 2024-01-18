@@ -2,7 +2,7 @@ import db from '../server/firebase.js';
 
 
 
-async function getAllActivities() {
+export async function getAllActivities() {
   const activities = [];
   const snapshot = await db.collection('activities').get();
   snapshot.forEach(doc => {
@@ -15,7 +15,7 @@ async function getAllActivities() {
 }
 
 
-async function getSumActivities(activities) {
+export async function getSumActivities(activities) {
   let athleteActivities = {};
 
   activities.forEach(activity => {
@@ -130,7 +130,7 @@ function prepareDatasetForMonthChart(activitiesByAthlete) {
 }
 
 
-async function createChartDataset(ac) {
+export async function createChartDataset(ac) {
   const activitiesByAthlete = await groupActivitiesByAthlete(ac);
   const activitiesGroupedByDate = groupActivitiesByDate(activitiesByAthlete);
   return prepareDatasetForMonthChart(activitiesGroupedByDate);
@@ -170,7 +170,7 @@ async function processAthleteData(activities) {
   return athleteStats;
 }
 
-async function prepareBarChartData(activities) {
+export async function prepareBarChartData(activities) {
   const datas= await processAthleteData(activities)
   console.log(datas)
   const athletes = Object.keys(datas);
@@ -188,4 +188,4 @@ async function prepareBarChartData(activities) {
 }
 
 
-export { getAllActivities, getSumActivities, createChartDataset, prepareBarChartData };
+/* export default { getAllActivities, getSumActivities, createChartDataset, prepareBarChartData }; */
