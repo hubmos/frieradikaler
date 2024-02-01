@@ -63,7 +63,8 @@ async function getSumActivities(activities) {
 
 function getCurrentMonthDateRange() {
   const today = new Date();
-  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1,5);
   return { start: firstDayOfMonth, end: today };
 }
 
@@ -122,7 +123,6 @@ function prepareDatasetForMonthChart(activitiesByAthlete) {
       // Check if there's an activity on this date
       Object.keys(activitiesByAthlete[athlete]).forEach(activityDate => {
         const activityDay = activityDate.substring(0, 10).replace(/ /g, '-'); ; // Extract just the 'YYYY MM DD' part
-        console.log(activityDay, dateString)
         if (activityDay === dateString) {
           cumulativeCount += activitiesByAthlete[athlete][activityDate];
           foundActivity = true;
@@ -180,13 +180,11 @@ async function processAthleteData(activities) {
 
         return Object.values(athleteStats);
   });
-  console.log(athleteStats)
   return athleteStats;
 }
 
 async function prepareBarChartData(activities) {
   const datas= await processAthleteData(activities)
-  console.log(datas)
   const athletes = Object.keys(datas);
   const activitiesSeries = { name: 'Treningsøkt', data: [] };
   const lengthSeries = { name: 'Avstand dekket', data: [] };

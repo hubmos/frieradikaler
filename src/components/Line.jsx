@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
 
+const now = new Date();
+const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1,5);
+const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
 const getCurrentMonthDates = () => {
-  const now = new Date();
-  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
   
   return {
     name: 'Veien te 600',
@@ -50,6 +51,8 @@ const ActivitiesChart = ({ activities }) => {
         title: {
           text: 'Date'
         },
+        min: startOfMonth,
+        max: now,
         
       },
       yaxis: {
@@ -86,6 +89,9 @@ const ActivitiesChart = ({ activities }) => {
 
   useEffect(() => {
     if (activities && activities.length > 0) {
+      // Optional: Filter activities to include only those within the current month
+
+      
       const goalLineData = getCurrentMonthDates();
       setChartData(chartData => ({
         ...chartData,
