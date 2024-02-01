@@ -3,9 +3,12 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ master ]
-  schedule:
-    - cron: "0 11-23 * * *"
+
   workflow_dispatch:
+  # Allows external webhook trigger
+  repository_dispatch:
+    types:
+      - webhook
 
 permissions:
   contents: read

@@ -6,39 +6,10 @@ frieradikaler is a single-page web application that showcases the latest running
 
 - Astro Framework for building the website
 - Strava API v3 for fetching activity data
-- SQLite for database management
-- absurd-sql for ensuring persistence on the web
+- Firebase for db and eventfunctions
 - Node.js as the runtime environment
-- cron for scheduling nightly updates
+- Tailwind for the looks
 - HTML and CSS3 for the presentation layer
-
-## Project Files and Directories
-
-This section provides a brief description of the project's file structure:
-
-- `.gitignore` - Contains a list of files and directories ignored by git
-- `astro.config.mjs` - Astro configuration module
-- `package.json` - Lists the project dependencies and metadata
-- `README.md` - The readme file you are currently reading
-- `tsconfig.json` - Configuration file for TypeScript
-- `public/favicon.svg` - The site favicon
-- `src/env.d.ts` - TypeScript definitions for Astro client
-- `src/components/` - Astro components used in the application
-- `src/layouts/` - Layout components for the app structure
-- `src/pages/` - Pages within the Astro application
-- `.env.local` and `.env` - Environment configuration files (should contain sensitive data)
-- `db/config.js` - Configuration for the SQLite database
-- `src/components/ActivitiesList.astro` - Component listing the fetched activities
-- `src/components/Activity.astro` - Represents a single activity
-- `src/utils/strava.js` - Utility functions to interact with the Strava API
-- `src/server/cronScheduledTasks.js` - Cron tasks for updating the database periodically
-- `src/test/fetchStravaActivities.js` - Test script for the Strava API functionality
-- `db/schema.sql` - SQL schema for the project's database
-- `db/utils.js` - Utility functions for database interactions
-- `db/database.js` - Initialization of the absurd-sql database
-- `frieradikaler_key.json` - Firebase service account key
-- `src/server/firebase.js` - Firebase admin initialization
-- `src/utils/firestore.js` - Functions to interact with Firebase Firestore
 
 ## Setup and Configuration
 
@@ -85,10 +56,6 @@ To preview the build locally before deployment:
 ```bash
 npm run preview
 ```
-
-## Automated Updates
-
-The `src/server/cronScheduledTasks.js` file contains a Node.js `cron` job that will update the activities from Strava API v3 nightly. The default timezone set for the update is UTC.
 
 ## Acknowledgements
 
