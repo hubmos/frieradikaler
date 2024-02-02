@@ -61,6 +61,33 @@ async function getSumActivities(activities) {
       return Object.values(athleteActivities);
 }
 
+async function getSumMonthActivities(activities) {
+  let athleteActivities = {};
+  let currMonth = new Date().getMonth();
+  activities.forEach(activity => {
+    const athleteName = activity.athleteName; // assuming athleteName is a field in your Firestore document
+
+    if (!athleteActivities[athleteName]) {
+      athleteActivities[athleteName] = {
+        totalDistance: 0,
+        count: 0,
+        athleteName
+      };
+    }
+    if (activity.date === "2023") {
+      return;
+    }
+    const month=activity.date.split('-')[1];
+   if(month!=currMonth) {
+    return;}
+    
+
+    athleteActivities[athleteName].totalDistance += activity.distance / 1000;
+    athleteActivities[athleteName].count += 1;
+  });
+      return Object.values(athleteActivities);
+}
+
 function getCurrentMonthDateRange() {
   const today = new Date();
 
@@ -143,7 +170,16 @@ function prepareDatasetForMonthChart(activitiesByAthlete) {
 
     series.push({ name: athlete, data });
   });
-
+  let currentDate = new Date(start);
+  let cumulativeCount = 0;
+  const data = [];
+  while (currentDate <= end) {
+    const dateString = currentDate.toISOString().split('T')[0];
+    cumulativeCount += 0.41
+    data.push({ x: dateString, y: cumulativeCount });
+    currentDate.setDate(currentDate.getDate() + 1);
+    }
+    series.push({ name: 'Veien te 600', data });
   return series;
 }
 
@@ -200,4 +236,4 @@ async function prepareBarChartData(activities) {
 }
 
 
-export { insertActivity, getAllActivities, getSumActivities, createChartDataset, prepareBarChartData };
+export { insertActivity, getAllActivities, getSumActivities, createChartDataset, prepareBarChartData, getSumMonthActivities };

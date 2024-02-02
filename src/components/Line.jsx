@@ -5,7 +5,7 @@ const now = new Date();
 const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1,5);
 const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
-const getCurrentMonthDates = () => {
+/* const getCurrentMonthDates = () => {
   
   return {
     name: 'Veien te 600',
@@ -18,7 +18,7 @@ const getCurrentMonthDates = () => {
       dashArray: 5     // Dotted line (5 = dot pattern)
     }
   };
-};
+}; */
 
 const ActivitiesChart = ({ activities }) => {
   const [chartData, setChartData] = useState({
@@ -92,10 +92,10 @@ const ActivitiesChart = ({ activities }) => {
       // Optional: Filter activities to include only those within the current month
 
       
-      const goalLineData = getCurrentMonthDates();
+      /* const goalLineData = getCurrentMonthDates(); */
       setChartData(chartData => ({
         ...chartData,
-        series: [...activities, goalLineData],
+        series: [...activities],
         chart: {
           type: 'line',
           width: '100%'

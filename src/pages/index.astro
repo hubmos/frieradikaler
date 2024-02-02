@@ -2,7 +2,7 @@
 import ActivitiesList from '../components/ActivitiesList.astro';
 import Chart from '../components/Donut.jsx';
 import Line from '../components/Line.jsx';
-import { getAllActivities, getSumActivities, createChartDataset, prepareBarChartData } from '../utils/firestore.js';
+import { getAllActivities, getSumActivities, createChartDataset, prepareBarChartData, getSumMonthActivities } from '../utils/firestore.js';
 import Faq from '../components/Faq.astro'
 import Bar from '../components/Bar';
 import RoadMap from '../components/RoadMap.astro';
@@ -11,6 +11,8 @@ const title = "The Fellowship of the Trim";
 
 const allActivities = await getAllActivities();
 const  athleteActivities =await getSumActivities(allActivities);
+
+const monthAthleteActicities=await getSumMonthActivities(allActivities);
 const barData= await prepareBarChartData(allActivities) 
 let totalActivities=0;
 allActivities.forEach(activity => {
@@ -127,7 +129,7 @@ if (bottomAthletesNames.length > 1) {
 		<div class="object-center justify-center"><Line activities={lineDatas} client:only/></div>
 		<div class="h-10"></div> 
 
-        <div class="flex flex-col w-full "><ActivitiesList athleteActivities={athleteActivities}/></div>
+        <div class="flex flex-col w-full "><ActivitiesList athleteActivities={monthAthleteActicities}/></div>
 		<div class="h-20"></div> 
 		<div class="h-20"></div> 
         <div class="object-center justify-center text-3xl font-bold text-center">{topNamesString}</div>
@@ -149,13 +151,13 @@ if (bottomAthletesNames.length > 1) {
 		<div class="text-3xl font-bold text-center object-center justify-center ">Fremgangen</div>
         <Chart activities={totalActivities} client:only/>
 		<div class="h-20"></div> 
-		
+		<div class="flex flex-col w-full "><ActivitiesList athleteActivities={athleteActivities}/></div>
 		<div class="h-20"></div> 
 		<div class="text-3xl font-bold text-center object-center justify-center">Samla tall</div>
 		<Bar acts={barData} client:only/>
 		<div class="h-20"></div> 
 		<div class="divider mx-20"></div> </div>
-		<RoadMap totaleAkts={totalActivities}/>		<div class=" h-20"></div>
+		<!-- <RoadMap totaleAkts={totalActivities}/>		<div class=" h-20"></div> -->
 		<div class="max-w-screen-lg mx-auto space-x-10 content-center"></div>
         <section id="faq" class="text-4xl font-bold object-center justify-center text-center ">FAQ</section>
 		<div class=" h-20"></div>
