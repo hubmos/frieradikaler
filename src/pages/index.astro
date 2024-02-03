@@ -28,7 +28,7 @@ type AthleteActivity = {
   athleteName: string;
 }; 
 const lineDatas=await createChartDataset(allActivities);
-const athleteActivitiesArray: AthleteActivity[] = Object.values(athleteActivities);
+const athleteActivitiesArray: AthleteActivity[] = Object.values(monthAthleteActicities);
 
 // Find the highest count of activities
 const highestCount = Math.max(...athleteActivitiesArray.map(athlete => athlete.count));

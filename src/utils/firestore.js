@@ -77,8 +77,8 @@ async function getSumMonthActivities(activities) {
     if (activity.date === "2023") {
       return;
     }
-    const month=activity.date.split('-')[1];
-   if(month!=currMonth) {
+    const month=activity.date.split(' ')[1];
+   if(month!=(currMonth+1)) {
     return;}
     
 
