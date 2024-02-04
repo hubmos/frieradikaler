@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
   schedule:
-    - cron: "0 23 * * *"
+    - cron: "0 06 * * *"
   workflow_dispatch:
   # Allows external webhook trigger
   repository_dispatch:
