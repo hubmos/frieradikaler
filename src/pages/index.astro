@@ -118,18 +118,19 @@ if (bottomAthletesNames.length > 1) {
 		<div class="max-w-screen-lg mx-auto space-x-10 content-center">
 		<div class="flex flex-col w-full ">
 			<div class="h-20"></div> 
-			<div class="divider mx-20"></div> 
-			
+			<div class="divider mx-20">
+			</div>
 		  </div>
         <section id="month" class="font-bold text-center"></section>
 		<div class=" h-20"></div>
 		<h1 class="text-5xl font-bold md:text-center object-center justify-center">Denna måneden</h1>
 		<div class="h-20"></div> 
 		<div class="text-3xl font-bold  md:text-center">Antall aktiviteta per pers</div>
-		<div class="object-center justify-center"><Line activities={lineDatas} client:only/></div>
+		<div class="object-center justify-center "><Line activities={lineDatas} client:only/></div>
 		<div class="h-10"></div> 
-
+	 </div> 
         <div class="flex flex-col w-full "><ActivitiesList athleteActivities={monthAthleteActicities}/></div>
+		<div class="max-w-screen-lg mx-auto content-center">
 		<div class="h-20"></div> 
 		<div class="h-20"></div> 
         <div class="object-center justify-center text-3xl font-bold text-center">{topNamesString}</div>
@@ -142,6 +143,7 @@ if (bottomAthletesNames.length > 1) {
 		<div class="h-20"></div> 
 		<div class="text-3xl font-bold text-center object-center justify-center">Månedens straff:</div>
         <div class="text-2xl text-center object-center justify-center">TBA</div>
+		<div class="flex flex-col w-full "></div>
 		<div class="h-20"></div> 
 		<div class="divider mx-20"></div> 
         <section id="year" class="text-4xl font-bold text-center"></section>
@@ -149,19 +151,21 @@ if (bottomAthletesNames.length > 1) {
 		<h1 class="text-5xl font-bold text-center object-center justify-center">Året</h1>
 		<div class=" h-20"></div>
 		<div class="text-3xl font-bold text-center object-center justify-center ">Fremgangen</div>
-        <Chart activities={totalActivities} client:only/>
-		<div class="h-20"></div> 
-		<div class="flex flex-col w-full "><ActivitiesList athleteActivities={athleteActivities}/></div>
+        <div class="object-center justify-center "><Chart activities={totalActivities} client:only/></div>
+		<div class="h-20"></div> </div>
+		<div class="flex flex-col w-full"><ActivitiesList athleteActivities={athleteActivities}/></div>
+		<div class="max-w-screen-lg mx-auto content-center">
 		<div class="h-20"></div> 
 		<div class="text-3xl font-bold text-center object-center justify-center">Samla tall</div>
-		<Bar acts={barData} client:only/>
+		<div class="object-center justify-center"><Bar acts={barData} client:only/></div>
+		<div class="flex flex-col w-full ">
 		<div class="h-20"></div> 
-		<div class="divider mx-20"></div> 
+		<div class="divider mx-20"></div> </div>
 		<!-- <RoadMap totaleAkts={totalActivities}/>		<div class=" h-20"></div> -->
 		<div class="max-w-screen-lg space-x-10 content-center"></div>
         <section id="faq" class="text-4xl font-bold object-center justify-center text-center ">FAQ</section>
 		<div class=" h-20"></div>
-        <div class=""><Faq /></div>
+        <div class="object-center justify-center"><Faq /></div>
 		<div class=" h-20"></div>
 		<div class=" h-20"></div>
 		<div class=" h-20"></div>

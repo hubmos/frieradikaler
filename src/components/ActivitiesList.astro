@@ -13,7 +13,7 @@ const {athleteActivities} = Astro.props;
 <tbody>
   {athleteActivities.slice().sort((a, b) => b.count - a.count).map((summary) => (
     <tr>
-      <td>{summary.athleteName}</td>
+      <td>{summary.athleteName.split(' ')[0]}</td>
       <td>{summary.count}</td>
       <td>{summary.totalDistance ? summary.totalDistance.toFixed(2) : '0.00'}</td>
     </tr>

@@ -7,7 +7,7 @@ const ActivitiesChart = ({ activities }) => {
     options: {
       chart: {
         type: 'donut',
-        width: '10%',
+        width: '100%',
       },
       yaxis: {labels: {show: false}},
       fill: {
@@ -40,7 +40,7 @@ const ActivitiesChart = ({ activities }) => {
   }, [activities]);
 
   return (
-    <div style={{ width: "100%" }} className="w-full"><Chart  options={chartData.options} series={chartData.series} type="donut" /></div>
+    <div style={{ width: "90%" }} className="w-full md:h-full"><Chart options={chartData.options} series={chartData.series} type="donut" /></div>
   );
 };
 
