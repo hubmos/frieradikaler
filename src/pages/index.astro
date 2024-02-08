@@ -71,7 +71,6 @@ if (bottomAthletesNames.length > 1) {
 <!doctype html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="/frieradikaler/src/styles/globals.css">
 	<link rel="manifest" href="/frieradikaler/manifest.json">
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -203,3 +202,8 @@ adjustNavbarOpacity();
     </main>
 </body>
 </html>
+<style is:global>
+	html {
+    scroll-behavior: smooth;
+}
+</style>
