@@ -6,13 +6,15 @@ import { getAllActivities, getSumActivities, createChartDataset, prepareBarChart
 import Faq from '../components/Faq.astro'
 import Bar from '../components/Bar';
 import RoadMap from '../components/RoadMap.astro';
+import Header from '../components/header';
 const title = "The Fellowship of the Trim"; 
 
 
 const allActivities = await getAllActivities();
 const  athleteActivities =await getSumActivities(allActivities);
 
-const monthAthleteActicities=await getSumMonthActivities(allActivities);
+const monthAthleteActicities=await getSumMonthActivities(allActivities, false);
+const prevMonth=await getSumMonthActivities(allActivities, true);
 const barData= await prepareBarChartData(allActivities) 
 let totalActivities=0;
 allActivities.forEach(activity => {
@@ -29,7 +31,9 @@ type AthleteActivity = {
 }; 
 const lineDatas=await createChartDataset(allActivities);
 const athleteActivitiesArray: AthleteActivity[] = Object.values(monthAthleteActicities);
-
+const monthSumActivities=monthAthleteActicities.map(athlete => athlete.count).reduce((partialSum, a) => partialSum+a,0);
+const prevMonthSum=prevMonth.map(athlete => athlete.count).reduce((partialSum, a) => partialSum+a,0);
+const actsSumArray=[totalActivities, monthSumActivities, prevMonthSum];
 // Find the highest count of activities
 const highestCount = Math.max(...athleteActivitiesArray.map(athlete => athlete.count));
 const lowCount = Math.min(...athleteActivitiesArray.map(athlete => athlete.count));
@@ -67,6 +71,7 @@ if (bottomAthletesNames.length > 1) {
 <!doctype html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" href="/src/styles/globals.css">
 	<link rel="manifest" href="/frieradikaler/manifest.json">
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -78,20 +83,43 @@ if (bottomAthletesNames.length > 1) {
 <!-- Your Astro component -->
 <script src="../scripts/client_firebase.js"></script>
 <body data-theme="retro">
-	<div class="navbar fixed bg-opacity-50 bg-lett">
+	<div id="navbar" class="navbar fixed bg-opacity-50 backdrop-blur-md z-50">
 		<div class="flex-1">
-		  <a class="btn btn-ghost text-xl">Muskel 2.0</a>
+		  <a class="btn btn-ghost text-xl" id="muskelTop">Muskel 2.0</a>
 		</div>
 		<div class="flex-none">
 		  <ul class="menu menu-horizontal px-1">
-			<li><a href="month">Måneden</a></li>
-			<li><a href="year">Året</a></li>
-			<li><a href="FAQ">FAQ</a></li>
+			<li><a href="#month">Måneden</a></li>
+			<li><a href="#year">Stats</a></li>
+			<li><a href="#FAQ">FAQ</a></li>
 		  </ul>
 		</div>
 	  </div>
 	<script>
-		document.querySelectorAll('.menu a').forEach(anchor => {
+		// Function to adjust navbar opacity
+function adjustNavbarOpacity() {
+  const navbar = document.getElementById('navbar');
+  const scrollHeight = window.scrollY;
+  const viewportHeight = window.innerHeight;
+
+  // Calculate the opacity based on scroll position.
+  // When scrolled down a full viewport height, opacity should be 0%.
+  let opacity = (scrollHeight / viewportHeight);
+
+  // Ensure opacity is between 0 and 1
+  opacity = Math.max(0, Math.min(opacity, 0.5));
+
+  // Set the navbar's opacity. You may need to adjust the style properties to match your CSS framework or custom styles.
+  navbar.style.backgroundColor = `rgba(228, 216, 180, ${opacity})`; // Assuming a white background, adjust the RGB values as needed.
+}
+
+// Listen for scroll events
+window.addEventListener('scroll', adjustNavbarOpacity);
+
+// Initial adjustment in case the page is not at the top when loaded
+adjustNavbarOpacity();
+
+/* 		document.querySelectorAll('.menu a').forEach(anchor => {
 			anchor.addEventListener('click', function (e) {
 				e.preventDefault();
 				const href = this.getAttribute('href').toLowerCase(); // Ensure lowercase for ID matching
@@ -102,18 +130,19 @@ if (bottomAthletesNames.length > 1) {
 					});
 				}
 			});
-		});
+		}); */
+		document.getElementById('muskelTop').addEventListener('click', function(e) {
+    e.preventDefault(); // Prevent default anchor behavior
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 	</script>
 	
     <main>
-        <div class='hero min-h-screen bg-[linear-gradient(180deg,rgba(236,227,202,0.5),rgba(236,227,202,1)_80%),url("/images/img.jpg")]'>
-			<div class="hero-content text-center">
-			  <div class="max-w-md">
-				<h1 class="text-5xl font-bold">Veien te 600 treningsøkter</h1>
-				<p class="py-6">E brolagt med svette slaskjævla.</p>
-			  </div>
-			</div>
-		  </div>
+		<Header acts={actsSumArray}/>
         <p></p>
 		<div class="max-w-screen-lg mx-auto space-x-10 content-center">
 		<div class="flex flex-col w-full ">
@@ -148,20 +177,21 @@ if (bottomAthletesNames.length > 1) {
 		<div class="divider mx-20"></div> 
         <section id="year" class="text-4xl font-bold text-center"></section>
 		<div class=" h-20"></div>
-		<h1 class="text-5xl font-bold text-center object-center justify-center">Året</h1>
-		<div class=" h-20"></div>
-		<div class="text-3xl font-bold text-center object-center justify-center ">Fremgangen</div>
-        <div class="object-center justify-center "><Chart activities={totalActivities} client:only/></div>
-		<div class="h-20"></div> </div>
-		<div class="flex flex-col w-full"><ActivitiesList athleteActivities={athleteActivities}/></div>
+		<h1 class="text-5xl font-bold text-center object-center justify-center">Totalt</h1>
+		<!-- <div class=" h-20"></div> -->
+<!--         <div class="object-center justify-center "><Chart activities={totalActivities} client:only/></div> -->
+		<!-- <div class="h-20"></div> </div> -->
 		<div class="max-w-screen-lg mx-auto content-center">
 		<div class="h-20"></div> 
-		<div class="text-3xl font-bold text-center object-center justify-center">Samla tall</div>
-		<div class="object-center justify-center"><Bar acts={barData} client:only/></div>
+		<div class="object-center justify-center"><Bar acts={barData} client:only/></div></div>
+		<div class="flex flex-col w-full"><ActivitiesList athleteActivities={athleteActivities}/></div>
 		<div class="flex flex-col w-full ">
 		<div class="h-20"></div> 
-		<div class="divider mx-20"></div> </div>
-		<!-- <RoadMap totaleAkts={totalActivities}/>		<div class=" h-20"></div> -->
+		<div id="mordor"class="divider mx-20"></div> </div>
+		<div class="h-20"></div> 
+		<h1 class="text-5xl font-bold text-center object-center justify-center">Veien te Mordor</h1>
+		<div class="h-20"></div>
+		<RoadMap totaleAkts={totalActivities}/>		<div class=" h-20"></div>
 		<div class="max-w-screen-lg space-x-10 content-center"></div>
         <section id="faq" class="text-4xl font-bold object-center justify-center text-center ">FAQ</section>
 		<div class=" h-20"></div>
@@ -169,7 +199,7 @@ if (bottomAthletesNames.length > 1) {
 		<div class=" h-20"></div>
 		<div class=" h-20"></div>
 		<div class=" h-20"></div>
-		<div class=" h-20"></div></div>
+		<div class=" h-20"></div>
     </main>
 </body>
 </html>

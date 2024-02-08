@@ -59,7 +59,9 @@ const ActivitiesChart = ({ activities }) => {
         title: {
         },
         labels: {
-          format: 'dd-MM',
+          formatter: function (val) {
+                return val.toFixed(0);
+                    },
           style: {
             fontSize: '14',
             fontFamily: 'Helvetica, Arial, sans-serif',

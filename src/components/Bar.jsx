@@ -20,6 +20,7 @@ const getCurrentMonthDates = () => {
 };
 
 const ActivitiesCharts = ({ acts }) => {
+  const [selectedActivity, setSelectedActivity] = useState('Totalt');
   const [chartData, setChartData] = useState({
     series: [], // This will hold the data for each athlete
     options: {
@@ -78,22 +79,36 @@ const ActivitiesCharts = ({ acts }) => {
     }
   });
 
+
   useEffect(() => {
-    if (acts && acts.length > 0) {
-      console.log(acts[0])
-      setChartData(chartData => ({
-        ...chartData,
-        series: acts.slice(1),
-        chart: {
-          type: 'bar',
-          width: '100%'
-        } // Combine acts and goal line data
-      }));
-    }
-  }, acts);
+    const filteredSeries = acts.find(serie => serie.name === selectedActivity);
+    setChartData(chartData => ({
+      ...chartData,
+      series: [
+        { name: 'Activities', data: filteredSeries.data },
+        { name: 'Distance', data: filteredSeries.distance },
+        { name: 'Duration', data: filteredSeries.duration }
+      ]
+    }));
+  }, [selectedActivity, acts]);
+
+  const handleActivityChange = (event) => {
+    setSelectedActivity(event.target.value);
+  };
 
   return (
-    <div style={{ width: "90%" }} className="w-full"><Chart class="md:h-full" options={chartData.options} series={chartData.series} type="bar" /></div>
+    <div>
+      <select className="select select-bordered select-sm w-full max-w-xs" onChange={handleActivityChange}>
+        <option value="Totalt">Totalt</option>
+        <option value="Sykkel">Sykkel</option>
+        <option value="Løping">Løping</option>
+        <option value="Styrke">Styrke</option>
+        <option value="Ski">Ski</option>
+      </select>
+      <div style={{ width: "90%" }} className="w-full">
+        <Chart options={chartData.options} series={chartData.series} type="bar" />
+      </div>
+    </div>
   );
 };
 

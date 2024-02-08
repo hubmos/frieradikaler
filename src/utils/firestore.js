@@ -61,9 +61,12 @@ async function getSumActivities(activities) {
       return Object.values(athleteActivities);
 }
 
-async function getSumMonthActivities(activities) {
+async function getSumMonthActivities(activities, prev) {
   let athleteActivities = {};
   let currMonth = new Date().getMonth();
+  if(prev) {
+    if (currMonth==0) return Object.values({'ingen': {'count':0}});
+    else currMonth-=1}
   activities.forEach(activity => {
     const athleteName = activity.athleteName; // assuming athleteName is a field in your Firestore document
 
@@ -207,33 +210,76 @@ async function processAthleteData(activities) {
     const distance = activity.distance / 1000;
     activity.athleteName;
     if (!athleteStats[athleteName]) {
-      athleteStats[athleteName] = { activitiesCount: 0, totalDistance: 0, totalDuration: 0 };
+      athleteStats[athleteName] = { activitiesCount: 0, totalDistance: 0, totalDuration: 0, runs: 0, runDist: 0, runDur: 0, bikes: 0, bikeDist: 0, bikeDur: 0, skis: 0, skiDist: 0, skiDur: 0, weights: 0, wDist: 0, wDur: 0 };
     }
 
     athleteStats[athleteName].activitiesCount += 1;
     athleteStats[athleteName].totalDistance += distance; // Assuming distance is a number
     athleteStats[athleteName].totalDuration += elapsed_time; // Assuming duration is a number
-
+if (activity.type=="Run") {
+  athleteStats[athleteName].runs += 1;
+  athleteStats[athleteName].runDist += distance; // Assuming distance is a number
+  athleteStats[athleteName].runDur += elapsed_time; // Assuming duration is a number
+}
+else if (activity.type=="VirtualRide") {
+  athleteStats[athleteName].bikes += 1;
+  athleteStats[athleteName].bikeDist += distance; // Assuming distance is a number
+  athleteStats[athleteName].bikeDur += elapsed_time; // Assuming duration is a number
+}
+else if (activity.type=="NordicSki") {
+  athleteStats[athleteName].skis += 1;
+  athleteStats[athleteName].skiDist += distance; // Assuming distance is a number
+  athleteStats[athleteName].skiDur += elapsed_time; // Assuming duration is a number
+}
+else if (activity.type=="WeightTraining" || athleteStats[athleteName].type=="Workout") {
+  athleteStats[athleteName].weights += 1;
+  athleteStats[athleteName].wDist += distance; // Assuming distance is a number
+  athleteStats[athleteName].wDur += elapsed_time; // Assuming duration is a number
+}
         return Object.values(athleteStats);
   });
   return athleteStats;
 }
 
 async function prepareBarChartData(activities) {
-  const datas= await processAthleteData(activities)
+  const datas = await processAthleteData(activities);
   const athletes = Object.keys(datas);
-  const activitiesSeries = { name: 'Treningsøkt', data: [] };
-  const lengthSeries = { name: 'Avstand dekket', data: [] };
-  const durationSeries = { name: 'Timer brukt', data: [] };
+
+  // Existing series
+  const activitiesSeries = { name: 'Totalt',data: [], distance: [], duration: [] };
+
+  // New series for activity types with additional details for duration and length
+  const runsSeries = { name: 'Løping', data: [], distance: [], duration: [] };
+  const bikesSeries = { name: 'Sykkel', data: [], distance: [], duration: [] };
+  const skisSeries = { name: 'Ski', data: [], distance: [], duration: [] };
+  const weightsSeries = { name: 'Styrke', data: [], distance: [], duration: [] };
 
   athletes.forEach(athlete => {
     activitiesSeries.data.push(datas[athlete].activitiesCount);
-    lengthSeries.data.push(datas[athlete].totalDistance.toFixed(2));
-    durationSeries.data.push(datas[athlete].totalDuration.toFixed(2));
+    activitiesSeries.distance.push(parseFloat(datas[athlete].totalDistance.toFixed(2)));
+    activitiesSeries.duration.push(parseFloat(datas[athlete].totalDuration.toFixed(2)));
+
+    // Populating the new series
+    runsSeries.data.push(datas[athlete].runs);
+    runsSeries.distance.push(parseFloat(datas[athlete].runDist.toFixed(2)));
+    runsSeries.duration.push(parseFloat(datas[athlete].runDur.toFixed(2)));
+
+    bikesSeries.data.push(datas[athlete].bikes);
+    bikesSeries.distance.push(parseFloat(datas[athlete].bikeDist.toFixed(2)));
+    bikesSeries.duration.push(parseFloat(datas[athlete].bikeDur.toFixed(2)));
+
+    skisSeries.data.push(datas[athlete].skis);
+    skisSeries.distance.push(parseFloat(datas[athlete].skiDist.toFixed(2)));
+    skisSeries.duration.push(parseFloat(datas[athlete].skiDur.toFixed(2)));
+
+    weightsSeries.data.push(datas[athlete].weights);
+    weightsSeries.distance.push(parseFloat(datas[athlete].wDist.toFixed(2)));
+    weightsSeries.duration.push(parseFloat(datas[athlete].wDur.toFixed(2)));
   });
 
-  return [athletes, activitiesSeries, lengthSeries, durationSeries];
+  return [athletes, activitiesSeries, runsSeries, bikesSeries, skisSeries, weightsSeries];
 }
+
 
 
 export { insertActivity, getAllActivities, getSumActivities, createChartDataset, prepareBarChartData, getSumMonthActivities };
