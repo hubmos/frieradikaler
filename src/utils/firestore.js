@@ -223,7 +223,7 @@ async function prepareBarChartData(activities) {
   const datas= await processAthleteData(activities)
   const athletes = Object.keys(datas);
   const activitiesSeries = { name: 'Treningsøkt', data: [] };
-  const lengthSeries = { name: 'Avstand dekket', data: [] };
+  const lengthSeries = { name: 'Mil dekket', data: [] };
   const durationSeries = { name: 'Timer brukt', data: [] };
 
   athletes.forEach(athlete => {
