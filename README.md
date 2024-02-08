@@ -1,6 +1,6 @@
 # frieradikaler
 
-frieradikaler is a single-page web application that showcases the latest running activities from a Strava Club. It automates the retrieval of data from Strava API v3 and displays the activities along with the distance covered. The application ensures that the activity data is always up to date with nightly updates and leverages an SQLite databases for data persistence.
+frieradikaler is a single-page web application that showcases the latest running activities from a Strava Club. It automates the retrieval of data from Strava API v3 and displays the activities along with the distance covered. The application ensures that the activity data is always up to date and leverages an Firebase for db and eventfunctions.
 
 ## Technologies Used
 
