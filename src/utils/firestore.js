@@ -214,7 +214,7 @@ async function processAthleteData(activities) {
     }
 
     athleteStats[athleteName].activitiesCount += 1;
-    athleteStats[athleteName].totalDistance += distance; // Assuming distance is a number
+    athleteStats[athleteName].totalDistance += distance / 10; // Assuming distance is a number
     athleteStats[athleteName].totalDuration += elapsed_time; // Assuming duration is a number
 if (activity.type=="Run") {
   athleteStats[athleteName].runs += 1;

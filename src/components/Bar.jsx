@@ -85,9 +85,9 @@ const ActivitiesCharts = ({ acts }) => {
     setChartData(chartData => ({
       ...chartData,
       series: [
-        { name: 'Activities', data: filteredSeries.data },
-        { name: 'Distance', data: filteredSeries.distance },
-        { name: 'Duration', data: filteredSeries.duration }
+        { name: 'Antall', data: filteredSeries.data },
+        { name: 'Mil dekket', data: filteredSeries.distance },
+        { name: 'Timer brukt', data: filteredSeries.duration }
       ]
     }));
   }, [selectedActivity, acts]);
