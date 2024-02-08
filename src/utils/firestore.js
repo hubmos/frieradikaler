@@ -231,7 +231,7 @@ else if (activity.type=="NordicSki") {
   athleteStats[athleteName].skiDist += distance; // Assuming distance is a number
   athleteStats[athleteName].skiDur += elapsed_time; // Assuming duration is a number
 }
-else if (activity.type=="WeightTraining" || athleteStats[athleteName].type=="Workout") {
+else if (activity.type=="WeightTraining" || activity.type=="Workout") {
   athleteStats[athleteName].weights += 1;
   athleteStats[athleteName].wDist += distance; // Assuming distance is a number
   athleteStats[athleteName].wDur += elapsed_time; // Assuming duration is a number
