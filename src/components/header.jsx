@@ -17,7 +17,7 @@ const Header =({acts}) => {
     
      <div class="card w-1/2 bg-base-200 shadow-xl bg-opacity-50 backdrop-blur-sm">
             <a href="#month" class="card-body">
-                <h2 class="card-title text-center">Måneden</h2>
+                <h2 class="card-title text-center"><font class="text-center">Måneden</font></h2>
                     <div className="text-2xl font-bold text-center">{acts[1]}<font class="text-lg text-gray-800">/50</font></div>
                     <p className="text-xs text-muted-foreground text-center">
                       <font class="text-s font-bold">{acts[2]}</font> forrige mnd
@@ -27,7 +27,7 @@ const Header =({acts}) => {
 
         <div class="card w-1/2 bg-base-200 shadow-xl  bg-opacity-50 backdrop-blur-sm">
         <a href="#year" class="card-body">
-                <h2 class="card-title text-center">Året</h2>
+                <h2 class="card-title text-center"><font class="text-center">Året</font></h2>
                     <div className="text-2xl font-bold text-center">{acts[0]}<font class="text-lg text-gray-800">/600</font></div>
                     <p className="text-xs text-muted-foreground text-center">
                       <font class="text-s font-bold">{formattedPct}%</font> igjen te Mount Doom 
