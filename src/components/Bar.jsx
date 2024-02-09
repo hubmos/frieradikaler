@@ -98,7 +98,7 @@ const ActivitiesCharts = ({ acts }) => {
 
   return (
     <div>
-      <select className="select select-bordered select-sm w-full max-w-xs justify-self-center" onChange={handleActivityChange}>
+      <select className="select select-bordered select-sm w-full max-w-xs justify-self-center content-center" onChange={handleActivityChange}>
         <option value="Totalt">Totalt</option>
         <option value="Sykkel">Sykkel</option>
         <option value="Løping">Løping</option>
