@@ -26,7 +26,7 @@ const Header =({acts}) => {
         </div>
 
         <div class="card w-1/2 bg-base-200 shadow-xl  bg-opacity-50 backdrop-blur-sm">
-        <a href="#mordor" class="card-body">
+        <a href="#year" class="card-body">
                 <h2 class="card-title">Året</h2>
                     <div className="text-2xl font-bold">{acts[0]}<font class="text-lg text-gray-800">/600</font></div>
                     <p className="text-xs text-muted-foreground">
