@@ -205,7 +205,7 @@ async function processAthleteData(activities) {
       return;
     }
 
-    const athleteName = activity.athleteName;
+    const athleteName = activity.athleteName.split(' ')[0];
     const elapsed_time =((activity.elapsed_time/60)/60);
     const distance = activity.distance / 10000;
     activity.athleteName;
