@@ -37,7 +37,7 @@ const ActivitiesCharts = ({ acts }) => {
         breakpoint: 480,
         options: {
            chart: {
-            height: 400
+            height: 350
           } 
         }
       }],
