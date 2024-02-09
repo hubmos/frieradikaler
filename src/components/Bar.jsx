@@ -28,7 +28,7 @@ const ActivitiesCharts = ({ acts }) => {
         type: 'bar',
         width: '100%',
         toolbar: {
-          show: true,}
+          show: false,}
       },
       responsive: [{
         breakpoint: 480,
@@ -98,7 +98,7 @@ const ActivitiesCharts = ({ acts }) => {
 
   return (
     <div>
-      <select className="select select-bordered select-sm w-full max-w-xs" onChange={handleActivityChange}>
+      <select className="select select-bordered select-sm w-full max-w-xs justify-self-center" onChange={handleActivityChange}>
         <option value="Totalt">Totalt</option>
         <option value="Sykkel">Sykkel</option>
         <option value="Løping">Løping</option>
