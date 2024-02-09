@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const viewportHeight = window.innerHeight;
         let opacity = scrollHeight / viewportHeight;
         opacity = Math.max(0, Math.min(opacity, 0.5));
-        navbar.style.backgroundColor = `rgba(228, 216, 180, ${opacity})`;
+        navbar.style.backgroundColor = `rgba(228, 216, 180, ${opacity} !important)`;
     }
 
     window.addEventListener('scroll', adjustNavbarOpacity);
