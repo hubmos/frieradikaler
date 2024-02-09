@@ -94,34 +94,8 @@ if (bottomAthletesNames.length > 1) {
 		  </ul>
 		</div>
 	  </div>
-	<script>
-		// Function to adjust navbar opacity
-document.addEventListener('DOMContentLoaded', function() {
-    function adjustNavbarOpacity() {
-        const navbar = document.getElementById('navbar');
-        const scrollHeight = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        let opacity = scrollHeight / viewportHeight;
-        opacity = Math.max(0, Math.min(opacity, 0.5));
-        navbar.style.backgroundColor = `rgba(228, 216, 180, ${opacity} !important)`;
-    }
-
-    window.addEventListener('scroll', adjustNavbarOpacity);
-    adjustNavbarOpacity(); // Run initially in case of reload at a scrolled position.
-});
-/* 		document.querySelectorAll('.menu a').forEach(anchor => {
-			anchor.addEventListener('click', function (e) {
-				e.preventDefault();
-				const href = this.getAttribute('href').toLowerCase(); // Ensure lowercase for ID matching
-				const targetElement = document.getElementById(href);
-				if(targetElement) {
-					targetElement.scrollIntoView({
-						behavior: 'smooth'
-					});
-				}
-			});
-		}); */
-		document.getElementById('muskelTop').addEventListener('click', function(e) {
+<script>
+document.getElementById('muskelTop').addEventListener('click', function(e) {
     e.preventDefault(); // Prevent default anchor behavior
     window.scrollTo({
         top: 0,
@@ -129,10 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-	</script>
-	
-    <main>
-		<Header acts={actsSumArray}/>
+</script>	
+<main>
+	<Header acts={actsSumArray}/>
         <p></p>
 		<div class="max-w-screen-lg mx-auto space-x-10 content-center">
 		<div class="flex flex-col w-full ">
