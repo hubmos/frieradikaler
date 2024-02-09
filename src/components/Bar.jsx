@@ -53,7 +53,11 @@ const ActivitiesCharts = ({ acts }) => {
       yaxis: {
         title: {
         },
+        
         labels: {
+          formatter: function (val) {
+                return val.toFixed(0);
+          },
           style: {
             fontSize: '14',
             fontFamily: 'Helvetica, Arial, sans-serif',
@@ -98,13 +102,13 @@ const ActivitiesCharts = ({ acts }) => {
 
   return (
     <div>
-      <div class="flex flex-col"><select className="select select-bordered select-sm w-full max-w-xs justify-self-center content-center" onChange={handleActivityChange}>
+      <div class="flex flex-col w-full"><div class="justify-self-center content-center"><select className="select select-bordered select-sm w-full max-w-xs" onChange={handleActivityChange}>
         <option value="Totalt">Totalt</option>
         <option value="Sykkel">Sykkel</option>
         <option value="Løping">Løping</option>
         <option value="Styrke">Styrke</option>
         <option value="Ski">Ski</option>
-      </select></div>
+      </select></div></div>
       <div style={{ width: "90%" }} className="w-full">
         <Chart options={chartData.options} series={chartData.series} type="bar" />
       </div>
