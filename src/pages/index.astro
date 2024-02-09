@@ -96,28 +96,19 @@ if (bottomAthletesNames.length > 1) {
 	  </div>
 	<script>
 		// Function to adjust navbar opacity
-function adjustNavbarOpacity() {
-  const navbar = document.getElementById('navbar');
-  const scrollHeight = window.scrollY;
-  const viewportHeight = window.innerHeight;
+document.addEventListener('DOMContentLoaded', function() {
+    function adjustNavbarOpacity() {
+        const navbar = document.getElementById('navbar');
+        const scrollHeight = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        let opacity = scrollHeight / viewportHeight;
+        opacity = Math.max(0, Math.min(opacity, 0.5));
+        navbar.style.backgroundColor = `rgba(228, 216, 180, ${opacity})`;
+    }
 
-  // Calculate the opacity based on scroll position.
-  // When scrolled down a full viewport height, opacity should be 0%.
-  let opacity = (scrollHeight / viewportHeight);
-
-  // Ensure opacity is between 0 and 1
-  opacity = Math.max(0, Math.min(opacity, 0.5));
-
-  // Set the navbar's opacity. You may need to adjust the style properties to match your CSS framework or custom styles.
-  navbar.style.backgroundColor = `rgba(228, 216, 180, ${opacity})`; // Assuming a white background, adjust the RGB values as needed.
-}
-
-// Listen for scroll events
-window.addEventListener('scroll', adjustNavbarOpacity);
-
-// Initial adjustment in case the page is not at the top when loaded
-adjustNavbarOpacity();
-
+    window.addEventListener('scroll', adjustNavbarOpacity);
+    adjustNavbarOpacity(); // Run initially in case of reload at a scrolled position.
+});
 /* 		document.querySelectorAll('.menu a').forEach(anchor => {
 			anchor.addEventListener('click', function (e) {
 				e.preventDefault();
