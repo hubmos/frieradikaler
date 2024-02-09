@@ -149,10 +149,10 @@ adjustNavbarOpacity();
 			<div class="divider mx-20">
 			</div>
 		  </div>
-        <section id="month" class="font-bold text-center"></section>
+        <section class="font-bold text-center"></section>
 		<div class=" h-20"></div>
 		<h1 class="text-5xl font-bold md:text-center object-center justify-center">Denna måneden</h1>
-		<div class="h-20"></div> 
+		<div id="month" class="h-20"></div> 
 		<div class="text-3xl font-bold  md:text-center">Antall aktiviteta per pers</div>
 		<div class="object-center justify-center "><Line activities={lineDatas} client:only/></div>
 		<div class="h-10"></div> 
@@ -174,20 +174,20 @@ adjustNavbarOpacity();
 		<div class="flex flex-col w-full "></div>
 		<div class="h-20"></div> 
 		<div class="divider mx-20"></div> 
-        <section id="year" class="text-4xl font-bold text-center"></section>
+        <section class="text-4xl font-bold text-center"></section>
 		<div class=" h-20"></div>
 		<h1 class="text-5xl font-bold text-center object-center justify-center">Totalt</h1>
 		<!-- <div class=" h-20"></div> -->
 <!--         <div class="object-center justify-center "><Chart activities={totalActivities} client:only/></div> -->
 		<!-- <div class="h-20"></div> </div> -->
-		<div class="max-w-screen-lg mx-auto content-center">
+		<div id="year" class="max-w-screen-lg mx-auto content-center">
 		<div class="h-20"></div> 
 		<div class="object-center justify-center"><Bar acts={barData} client:only/></div></div>
 		<div class="flex flex-col w-full"><ActivitiesList athleteActivities={athleteActivities}/></div>
 		<div class="flex flex-col w-full ">
 		<div class="h-20"></div> 
-		<div id="mordor"class="divider mx-20"></div> </div>
-		<div class="h-20"></div> 
+		<div class="divider mx-20"></div> </div>
+		<div id="mordor" class="h-20"></div> 
 		<h1 class="text-5xl font-bold text-center object-center justify-center">Veien te Mordor</h1>
 		<div class="h-20"></div>
 		<RoadMap totaleAkts={totalActivities}/>		<div class=" h-20"></div>
