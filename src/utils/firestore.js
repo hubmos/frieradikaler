@@ -205,16 +205,16 @@ async function processAthleteData(activities) {
       return;
     }
 
-    const athleteName = activity.athleteName;
+    const athleteName = activity.athleteName.split(' ')[0];
     const elapsed_time =((activity.elapsed_time/60)/60);
-    const distance = activity.distance / 1000;
+    const distance = activity.distance / 10000;
     activity.athleteName;
     if (!athleteStats[athleteName]) {
       athleteStats[athleteName] = { activitiesCount: 0, totalDistance: 0, totalDuration: 0, runs: 0, runDist: 0, runDur: 0, bikes: 0, bikeDist: 0, bikeDur: 0, skis: 0, skiDist: 0, skiDur: 0, weights: 0, wDist: 0, wDur: 0 };
     }
 
     athleteStats[athleteName].activitiesCount += 1;
-    athleteStats[athleteName].totalDistance += distance / 10; // Assuming distance is a number
+    athleteStats[athleteName].totalDistance += distance; // Assuming distance is a number
     athleteStats[athleteName].totalDuration += elapsed_time; // Assuming duration is a number
 if (activity.type=="Run") {
   athleteStats[athleteName].runs += 1;

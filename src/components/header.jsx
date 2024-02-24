@@ -13,11 +13,11 @@ const Header =({acts}) => {
             </div>
         </div>
     </div>
-<div class="flex justify-center gap-4 mb-8 px-4 py-8 max-w-screen">
+<div class="flex justify-center gap-4 mb-8 px-4 pb-10 max-w-screen">
     
-     <div class="card w-auto bg-base-200 shadow-xl bg-opacity-50 backdrop-blur-sm">
-            <a href="#month" class="card-body">
-                <h2 class="card-title">Måneden</h2>
+     <div class="card w-1/2 bg-base-200 shadow-xl bg-opacity-50 backdrop-blur-sm">
+            <a href="#month" class="card-body text-center items-center">
+                <h2 class="card-title text-center">Måneden</h2>
                     <div className="text-2xl font-bold">{acts[1]}<font class="text-lg text-gray-800">/50</font></div>
                     <p className="text-xs text-muted-foreground">
                       <font class="text-s font-bold">{acts[2]}</font> forrige mnd
@@ -25,12 +25,12 @@ const Header =({acts}) => {
             </a>
         </div>
 
-        <div class="card w-auto bg-base-200 shadow-xl  bg-opacity-50 backdrop-blur-sm">
-        <a href="#mordor" class="card-body">
-                <h2 class="card-title">Året</h2>
+        <div class="card w-1/2 bg-base-200 shadow-xl  bg-opacity-50 backdrop-blur-sm">
+        <a href="#year" class="card-body text-center items-center">
+                <h2 class="card-title text-center">Året</h2>
                     <div className="text-2xl font-bold">{acts[0]}<font class="text-lg text-gray-800">/600</font></div>
                     <p className="text-xs text-muted-foreground">
-                      <font class="text-s font-bold">{formattedPct}%</font> te Mt. Doom 
+                      <font class="text-s font-bold">{formattedPct}%</font> igjen te Mount Doom 
                     </p>
             </a>
         </div>

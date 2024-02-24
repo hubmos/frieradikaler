@@ -94,43 +94,8 @@ if (bottomAthletesNames.length > 1) {
 		  </ul>
 		</div>
 	  </div>
-	<script>
-		// Function to adjust navbar opacity
-function adjustNavbarOpacity() {
-  const navbar = document.getElementById('navbar');
-  const scrollHeight = window.scrollY;
-  const viewportHeight = window.innerHeight;
-
-  // Calculate the opacity based on scroll position.
-  // When scrolled down a full viewport height, opacity should be 0%.
-  let opacity = (scrollHeight / viewportHeight);
-
-  // Ensure opacity is between 0 and 1
-  opacity = Math.max(0, Math.min(opacity, 0.5));
-
-  // Set the navbar's opacity. You may need to adjust the style properties to match your CSS framework or custom styles.
-  navbar.style.backgroundColor = `rgba(228, 216, 180, ${opacity})`; // Assuming a white background, adjust the RGB values as needed.
-}
-
-// Listen for scroll events
-/* window.addEventListener('scroll', adjustNavbarOpacity);
-
-// Initial adjustment in case the page is not at the top when loaded
-adjustNavbarOpacity(); */
-
-/* 		document.querySelectorAll('.menu a').forEach(anchor => {
-			anchor.addEventListener('click', function (e) {
-				e.preventDefault();
-				const href = this.getAttribute('href').toLowerCase(); // Ensure lowercase for ID matching
-				const targetElement = document.getElementById(href);
-				if(targetElement) {
-					targetElement.scrollIntoView({
-						behavior: 'smooth'
-					});
-				}
-			});
-		}); */
-		document.getElementById('muskelTop').addEventListener('click', function(e) {
+<script>
+document.getElementById('muskelTop').addEventListener('click', function(e) {
     e.preventDefault(); // Prevent default anchor behavior
     window.scrollTo({
         top: 0,
@@ -138,10 +103,9 @@ adjustNavbarOpacity(); */
     });
 });
 
-	</script>
-	
-    <main>
-		<Header acts={actsSumArray}/>
+</script>	
+<main>
+	<Header acts={actsSumArray}/>
         <p></p>
 		<div class="max-w-screen-lg mx-auto space-x-10 content-center">
 		<div class="flex flex-col w-full ">
@@ -149,10 +113,10 @@ adjustNavbarOpacity(); */
 			<div class="divider mx-20">
 			</div>
 		  </div>
-        <section id="month" class="font-bold text-center"></section>
+        <section class="font-bold text-center"></section>
 		<div class=" h-20"></div>
 		<h1 class="text-5xl font-bold md:text-center object-center justify-center">Denna måneden</h1>
-		<div class="h-20"></div> 
+		<div id="month" class="h-20"></div> 
 		<div class="text-3xl font-bold  md:text-center">Antall aktiviteta per pers</div>
 		<div class="object-center justify-center "><Line activities={lineDatas} client:only/></div>
 		<div class="h-10"></div> 
@@ -174,20 +138,20 @@ adjustNavbarOpacity(); */
 		<div class="flex flex-col w-full "></div>
 		<div class="h-20"></div> 
 		<div class="divider mx-20"></div> 
-        <section id="year" class="text-4xl font-bold text-center"></section>
+        <section class="text-4xl font-bold text-center"></section>
 		<div class=" h-20"></div>
 		<h1 class="text-5xl font-bold text-center object-center justify-center">Totalt</h1>
 		<!-- <div class=" h-20"></div> -->
 <!--         <div class="object-center justify-center "><Chart activities={totalActivities} client:only/></div> -->
 		<!-- <div class="h-20"></div> </div> -->
-		<div class="max-w-screen-lg mx-auto content-center">
+		<div id="year" class="max-w-screen-lg mx-auto content-center">
 		<div class="h-20"></div> 
 		<div class="object-center justify-center"><Bar acts={barData} client:only/></div></div>
 		<div class="flex flex-col w-full"><ActivitiesList athleteActivities={athleteActivities}/></div>
 		<div class="flex flex-col w-full ">
 		<div class="h-20"></div> 
-		<div id="mordor"class="divider mx-20"></div> </div>
-		<div class="h-20"></div> 
+		<div class="divider mx-20"></div> </div>
+		<div id="mordor" class="h-20"></div> 
 		<h1 class="text-5xl font-bold text-center object-center justify-center">Veien te Mordor</h1>
 		<div class="h-20"></div>
 		<RoadMap totaleAkts={totalActivities}/>		<div class=" h-20"></div>

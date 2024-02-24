@@ -28,14 +28,17 @@ const ActivitiesCharts = ({ acts }) => {
         type: 'bar',
         width: '100%',
         toolbar: {
-          show: true,}
+          show: false,}
       },
+      plotOptions: {bar: {dataLabels: {
+        orientation: 'vertical'
+      },},},
       responsive: [{
         breakpoint: 480,
         options: {
-          chart: {
-            height: 300
-          }
+           chart: {
+            height: 320
+          } 
         }
       }],
       xaxis: {
@@ -53,7 +56,11 @@ const ActivitiesCharts = ({ acts }) => {
       yaxis: {
         title: {
         },
+        
         labels: {
+          formatter: function (val) {
+                return val.toFixed(0);
+          },
           style: {
             fontSize: '14',
             fontFamily: 'Helvetica, Arial, sans-serif',
@@ -98,13 +105,13 @@ const ActivitiesCharts = ({ acts }) => {
 
   return (
     <div>
-      <select className="select select-bordered select-sm w-full max-w-xs" onChange={handleActivityChange}>
+      <div class="flex flex-col w-full"><div class="justify-self-center content-center text-center"><select className="select select-bordered select-sm max-w-xs w-full" onChange={handleActivityChange}>
         <option value="Totalt">Totalt</option>
         <option value="Sykkel">Sykkel</option>
         <option value="Løping">Løping</option>
         <option value="Styrke">Styrke</option>
         <option value="Ski">Ski</option>
-      </select>
+      </select></div></div>
       <div style={{ width: "90%" }} className="w-full">
         <Chart options={chartData.options} series={chartData.series} type="bar" />
       </div>
