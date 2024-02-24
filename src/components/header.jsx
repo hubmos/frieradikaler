@@ -3,13 +3,13 @@ const Header =({acts}) => {
     const pct = acts.length > 0 ? 100 - ((acts[0] / 600) * 100) : 0;
     const formattedPct = pct.toFixed(2); 
     return (
-    <div class='hero min-h-screen bg-cover bg-[linear-gradient(180deg,rgba(236,227,202,0.5),rgba(236,227,202,1)_95%),url("/images/bree2.jpg")] flex flex-col justify-between'>
+    <div class='hero min-h-screen bg-cover bg-[linear-gradient(180deg,rgba(236,227,202,0.5),rgba(236,227,202,1)_95%),url("/images/weathertop.jpg")] flex flex-col justify-between'>
     <div class="flex-grow flex items-center">
         <div class="hero-content text-center flex-grow">
             <div class="max-w-md mx-auto">
                 <h1 class="text-5xl font-bold">Veien te <s>600</s></h1>
                 <h1 class="text-5xl font-bold">Mount Doom!</h1>
-                <h2 class="py-6">Vi e ankommet <a href="#mordor" class="btn btn-secondary btn-sm">Bree</a> !</h2>
+                <h2 class="py-6">Vi slår leir på <a href="#mordor" class="btn btn-secondary btn-sm">Weathertop</a> !</h2>
             </div>
         </div>
     </div>
