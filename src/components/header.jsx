@@ -7,8 +7,8 @@ const Header =({acts}) => {
     <div class="flex-grow flex items-center">
         <div class="hero-content text-center flex-grow">
             <div class="max-w-md mx-auto">
-                <h1 class="text-5xl font-bold">Veien te <s>600</s></h1>
-                <h1 class="text-5xl font-bold">Mount Doom!</h1>
+                <h1 class="text-5xl font-bold opacity-50">Veien te <s>600</s></h1>
+                <h1 class="text-5xl font-bold opacity-50">Mount Doom!</h1>
                 <h2 class="py-6">Endelig finn vi neste stopp, <a href="#mordor" class="btn btn-primary btn-sm">Rivendell</a> !</h2>
             </div>
         </div>
