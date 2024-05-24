@@ -51,7 +51,7 @@ async function getSumActivities(activities) {
         athleteName
       };
     }
-    if (activity.date === "2023") {
+    if (activity.date.startsWith("2023")) {
       return;
     }
 
@@ -77,7 +77,7 @@ async function getSumMonthActivities(activities, prev) {
         athleteName
       };
     }
-    if (activity.date === "2023") {
+    if (activity.date.startsWith("2023") {
       return;
     }
     const month=activity.date.split(' ')[1];
@@ -201,7 +201,7 @@ createChartDataset().then(dataset => {
 async function processAthleteData(activities) {
   const athleteStats = {};
   activities.forEach(activity => {
-    if (activity.date === "2023") {
+    if (activity.date.startsWith("2023")) {
       return;
     }
 
