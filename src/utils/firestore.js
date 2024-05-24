@@ -77,7 +77,7 @@ async function getSumMonthActivities(activities, prev) {
         athleteName
       };
     }
-    if (activity.date.startsWith("2023") {
+    if (activity.date.startsWith("2023")){
       return;
     }
     const month=activity.date.split(' ')[1];
