@@ -3,7 +3,7 @@ const Header =({acts}) => {
     const pct = acts.length > 0 ? 100 - ((acts[0] / 600) * 100) : 0;
     const formattedPct = pct.toFixed(2); 
     return (
-    <div class='hero min-h-screen bg-cover bg-[linear-gradient(180deg,rgba(236,227,202,0.5),rgba(236,227,202,1)_90%),url("/images/springs.jpg")] flex flex-col justify-between'>
+    <div class='hero min-h-screen bg-cover bg-[linear-gradient(180deg,rgba(236,227,202,0.4),rgba(236,227,202,1)_95%),url("/images/springs.jpg")] flex flex-col justify-between'>
     <div class="flex-grow flex items-center">
         <div class="hero-content text-center flex-grow">
             <div class="max-w-md mx-auto">
