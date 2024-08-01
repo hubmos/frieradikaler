@@ -18,6 +18,7 @@ const prevMonth=await getSumMonthActivities(allActivities, true);
 const barData= await prepareBarChartData(allActivities) 
 let totalActivities=0;
 allActivities.forEach(activity => {
+    console.log(!activity.id + " date: " +!activity.date)
     if (!activity.date.startsWith("2023")) {
         totalActivities += 1;
     }});
