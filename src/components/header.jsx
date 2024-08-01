@@ -9,7 +9,7 @@ const Header =({acts}) => {
             <div class="max-w-md mx-auto">
                 <h1 class="text-5xl font-bold opacity-50">Veien te <s>600</s></h1>
                 <h1 class="text-5xl font-bold opacity-50">Mount Doom!</h1>
-                <h2 class="py-6">Vi utforska den mystiske <a href="#mordor" class="btn btn-primary btn-sm">Fangornskogen</a> !</h2>
+                <h2 class="py-6">Vi ror med knekte åre i <a href="#mordor" class="btn btn-primary btn-sm">Entwash elva</a> !</h2>
             </div>
         </div>
     </div>
